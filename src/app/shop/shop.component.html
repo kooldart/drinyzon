@@ -1,0 +1,15 @@
+<select name="Categories">
+<div *ngFor="let cat of categories">
+	<option value="{{ cat.name }}">hello ther{{ cat.name }}</option>
+</div>
+</select>
+
+<div *ngFor="let cat of categories">
+	<p>{{ cat.name }}</p>
+</div>
+
+<h2>Items</h2>
+<div *ngFor="let item of items">
+	<h3>{{ item.title }}</h3><h4>{{ item.description + " - " +  item.category + " $" + item.price }}</h4>
+		<br>	
+</div>

@@ -1,0 +1,38 @@
+[
+{
+  "title": "Asus Laptop",
+  "description": "Very Good",
+  "price": 500,
+  "category": "Laptops"
+},
+{
+  "title": "Acer Laptop",
+  "description": "Medium Good",
+  "price": 300,
+  "category": "Laptops"
+},
+{
+  "title": "Dell Laptop",
+  "description": "Extra Good",
+  "price": 800,
+  "category": "Laptops"
+},
+{
+  "title": "Samsung S20",
+  "description": "Extra Very Good",
+  "price": 1200,
+  "category": "Phones"
+},
+{
+  "title": "IPhone 11",
+  "description": "Extra Extra Very Good",
+  "price": 1400,
+  "category": "Phones"
+},
+{
+  "title": "Huawei p20",
+  "description": "Nice Ass",
+  "price": 900,
+  "category": "Phones"
+}
+]
