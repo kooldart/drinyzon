@@ -10,19 +10,54 @@ import { ICategory } from '../category';
 })
 export class ShopComponent implements OnInit {
 
-  constructor(private itemService : ItemServiceService) { }
-
 	items : IItem[];
 
 	categories : ICategory[];
 
+	pageOptions : number[] = [
+		1, 2, 3, 4
+	];
+
+	currentPages : number;
+
+	totalItems : number = 1;
+
+	activePage : number = 0;
+
+	currentCat : string;
+
+	constructor(private itemService : ItemServiceService) { }
+
+	ChangePage(to) {
+		this.activePage = to;
+	}
+
+	GetMaxPages() : number {
+		return Math.ceil(this.totalItems / this.currentPages);
+	}
+
+	GetItems() : IItem[] {
+		if (typeof this.items != 'undefined'){
+			var elems = parseInt(this.activePage) * parseInt(this.currentPages);
+			var cutOutItems = this.items.slice(elems, parseInt(elems) + parseInt(this.currentPages));
+			return cutOutItems;
+		}
+		else return this.items;
+	}
+
+	PageSelect(pg){
+		this.currentPages = pg;
+		this.activePage = 0;
+	}
+
 	CatSelect(currentCat) {
-		console.log("Cat changed to " + currentCat);
+		this.currentCat = currentCat;
 	}
 
 	ngOnInit(): void {
-		this.itemService.GetItems().subscribe(data => this.items = data);
-		this.itemService.GetCategories().subscribe(cat => this.categories = cat);
+		this.itemService.GetItems().subscribe(data => (this.items = data, this.totalItems = data.length));
+		this.itemService.GetCategories().subscribe(cat => (this.categories = cat, this.currentCat = cat[0].name));
+		this.currentPages = this.pageOptions[0];
 	}
 
 }
