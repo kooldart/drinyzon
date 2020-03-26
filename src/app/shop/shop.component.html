@@ -1,8 +1,9 @@
-<select name="Categories">
-<div *ngFor="let cat of categories">
-	<option value="{{ cat.name }}">hello ther{{ cat.name }}</option>
-</div>
+<select (change)="CatSelect(currentCat.value)">
+	<option value="All">All</option>
+	<option *ngFor="let cat of categories" #currentCat value="{{ cat.name }}">{{ cat.name }}</option>
 </select>
+
+<input #currentCat type="text">
 
 <div *ngFor="let cat of categories">
 	<p>{{ cat.name }}</p>

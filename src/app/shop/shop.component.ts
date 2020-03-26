@@ -16,6 +16,10 @@ export class ShopComponent implements OnInit {
 
 	categories : ICategory[];
 
+	CatSelect(currentCat) {
+		console.log("Cat changed to " + currentCat);
+	}
+
 	ngOnInit(): void {
 		this.itemService.GetItems().subscribe(data => this.items = data);
 		this.itemService.GetCategories().subscribe(cat => this.categories = cat);
