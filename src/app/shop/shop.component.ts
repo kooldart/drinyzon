@@ -38,15 +38,16 @@ export class ShopComponent implements OnInit {
 
 	GetItems() : IItem[] {
 		if (typeof this.items != 'undefined'){
-			var elems = parseInt(this.activePage) * parseInt(this.currentPages);
-			var cutOutItems = this.items.slice(elems, parseInt(elems) + parseInt(this.currentPages));
+			var elems : number = this.activePage * this.currentPages;
+			var cutOutItems = this.items.slice(elems, elems + this.currentPages);
+			console.log("Elems type: " + typeof(elems) + " CurrentPages Type: " + typeof(this.currentPages));
 			return cutOutItems;
 		}
 		else return this.items;
 	}
 
 	PageSelect(pg){
-		this.currentPages = pg;
+		this.currentPages = parseInt(pg);
 		this.activePage = 0;
 	}
 
