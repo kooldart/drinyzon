@@ -22,10 +22,7 @@ export class ShopComponent implements OnInit {
 	currentCat : string;
 
 	constructor(private itemService : ItemServiceService) {
-		this.itemService.GetItems().subscribe(data => { this.items = data; this.currentCatItems = data; this.currentItemsLength = data.length; });
-		this.itemService.GetCategories().subscribe(cat => { this.categories = cat; this.currentCat = cat[0].name; });
-		this.currentPages = this.pageOptions[0];
-	}
+			}
 
 	ChangePage(to) {
 		this.activePage = to;
@@ -36,6 +33,7 @@ export class ShopComponent implements OnInit {
 	}
 
 	GetItems() : IItem[] {
+		console.log("GetItems()");
 		var elems = this.activePage * this.currentPages;
 		var cutOutItems = this.currentCatItems.slice(elems, elems + this.currentPages);
 		return cutOutItems;
@@ -53,6 +51,10 @@ export class ShopComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		}
+		this.itemService.GetItems().subscribe(data => { this.items = data; this.currentCatItems = data; this.currentItemsLength = data.length; });
+		this.itemService.GetCategories().subscribe(cat => { this.categories = cat; this.currentCat = cat[0].name; });
+		this.currentPages = this.pageOptions[0];
+		console.log("ngOnInit: " + this.currentItemsLength);
+	}
 
 }
